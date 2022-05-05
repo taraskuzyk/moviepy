@@ -7,11 +7,13 @@ main subclasses:
 import os
 import subprocess as sp
 import tempfile
+import uuid
 import warnings
 
 import numpy as np
 import proglog
 from imageio import imread, imsave
+import uuid
 
 from ..Clip import Clip
 from ..compat import DEVNULL, string_types
@@ -284,7 +286,7 @@ class VideoClip(Clip):
             audiofile = temp_audiofile
         elif make_audio:
             audio_ext = find_extension(audio_codec)
-            audiofile = (name + Clip._TEMP_FILES_PREFIX + "wvf_snd.%s" % audio_ext)
+            audiofile = (name + Clip._TEMP_FILES_PREFIX + str(uuid.uuid4()) + "wvf_snd.%s" % audio_ext)
 
         # enough cpu for multiprocessing ? USELESS RIGHT NOW, WILL COME AGAIN
         # enough_cpu = (multiprocessing.cpu_count() > 1)
