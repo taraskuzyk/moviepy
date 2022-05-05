@@ -308,9 +308,8 @@ class VideoClip(Clip):
                            ffmpeg_params=ffmpeg_params,
                            logger=logger)
 
-        if remove_temp and make_audio:
-            if os.path.exists(audiofile):
-                os.remove(audiofile)
+        if os.path.exists(audiofile):
+            os.remove(audiofile)
         logger(message="Moviepy - video ready %s" % filename)
 
     @requires_duration
