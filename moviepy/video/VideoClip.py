@@ -308,7 +308,7 @@ class VideoClip(Clip):
                            ffmpeg_params=ffmpeg_params,
                            logger=logger)
 
-        if os.path.exists(audiofile):
+        if audiofile is not None and os.path.exists(audiofile):
             os.remove(audiofile)
         logger(message="Moviepy - video ready %s" % filename)
 
